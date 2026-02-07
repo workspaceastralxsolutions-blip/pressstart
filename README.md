@@ -667,8 +667,8 @@
             <article class="bundle-card" id="tlou-bundle">
                 <div class="bundle-preview" onclick="toggleBundle('tlou-bundle')">
                     <div class="bundle-images">
-                        <img src="https://image.api.playstation.com/vulcan/ap/rnd/202206/0720/eEczyEMDd2BLa3dtkGJVE9Id.png" alt="The Last of Us Part I">
-                        <img src="https://image.api.playstation.com/vulcan/ap/rnd/202311/1717/4d7d199a6abee400cdfd7925f59661a37fbc3083bc44f0f4.png" alt="The Last of Us Part II">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1888930/header.jpg" alt="The Last of Us Part I">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2531310/header.jpg" alt="The Last of Us Part II">
                     </div>
                     <div class="bundle-info">
                         <div class="bundle-header">
@@ -776,8 +776,8 @@
             <article class="bundle-card" id="sh-bundle">
                 <div class="bundle-preview" onclick="toggleBundle('sh-bundle')">
                     <div class="bundle-images">
-                        <img src="https://image.api.playstation.com/vulcan/ap/rnd/202408/2010/b448dd24da1ec4cd67c9f51ec718b93eaff3b2d103f9c687.jpg" alt="Silent Hill 2 Remake">
-                        <img src="https://assets-prd.ignimgs.com/2022/10/19/silent-hill-f-blogroll-1666210193498.jpg" alt="Silent Hill f">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg" alt="Silent Hill 2 Remake">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2417610/header.jpg" alt="Silent Hill f">
                     </div>
                     <div class="bundle-info">
                         <div class="bundle-header">
