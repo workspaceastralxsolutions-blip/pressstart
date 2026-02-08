@@ -3,629 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>▶ P R E S S  S T A R T - Game Store</title>
+    <title>PRESS START - Game Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FFD700;
-            --primary-dark: #B8860B;
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-card-hover: #1a1a25;
+            --primary-cyan: #00FFFF;
+            --primary-magenta: #FF00FF;
+            --primary-gradient: linear-gradient(135deg, #00FFFF 0%, #FF00FF 100%);
+            --bg-dark: #000000;
+            --bg-card: #0a0a12;
             --text-primary: #ffffff;
             --text-secondary: #8a8a9a;
             --accent-red: #ff4444;
-            --accent-green: #44ff88;
-            --glow: rgba(255, 215, 0, 0.3);
+            --glow-cyan: rgba(0, 255, 255, 0.4);
+            --glow-magenta: rgba(255, 0, 255, 0.4);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Animated background */
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .circuit-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .circuit-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            height: 1px;
-            animation: circuit-flow 8s linear infinite;
-            opacity: 0.2;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Rajdhani', sans-serif; background: var(--bg-dark); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
+        .bg-grid { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 0, 255, 0.02) 1px, transparent 1px); background-size: 50px 50px; pointer-events: none; z-index: 0; }
+        .circuit-lines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .circuit-line { position: absolute; height: 1px; animation: circuit-flow 8s linear infinite; opacity: 0.3; }
+        .circuit-line:nth-child(odd) { background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent); }
+        .circuit-line:nth-child(even) { background: linear-gradient(90deg, transparent, var(--primary-magenta), transparent); }
         .circuit-line:nth-child(1) { top: 10%; width: 200px; animation-delay: 0s; }
         .circuit-line:nth-child(2) { top: 25%; width: 150px; animation-delay: 2s; }
         .circuit-line:nth-child(3) { top: 45%; width: 250px; animation-delay: 4s; }
         .circuit-line:nth-child(4) { top: 70%; width: 180px; animation-delay: 1s; }
         .circuit-line:nth-child(5) { top: 85%; width: 220px; animation-delay: 3s; }
-
-        @keyframes circuit-flow {
-            0% { left: -300px; }
-            100% { left: 100%; }
-        }
-
-        /* Header */
-        header {
-            position: relative;
-            z-index: 10;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-            background: linear-gradient(180deg, rgba(10, 10, 15, 0.95) 0%, transparent 100%);
-        }
-
-        .logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 0.3em;
-            color: var(--primary);
-            text-shadow: 0 0 20px var(--glow);
-        }
-
-        .nav-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            padding: 10px 20px;
-            border: 1px solid var(--primary);
-            border-radius: 4px;
-        }
-
-        .nav-links a:hover {
-            background: var(--primary);
-            color: var(--bg-dark);
-            box-shadow: 0 0 20px var(--glow);
-        }
-
-        .nav-links a svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            z-index: 5;
-            text-align: center;
-            padding: 60px 20px 40px;
-        }
-
-        .hero-tagline {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 0.5em;
-            color: var(--primary);
-            margin-bottom: 15px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 300;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Main Content */
-        main {
-            position: relative;
-            z-index: 5;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            color: var(--primary);
-        }
-
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--primary), transparent);
-        }
-
-        /* Compact Bundle Cards */
-        .bundles-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .bundle-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .bundle-card:hover {
-            border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        .bundle-card.expanded {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--glow);
-        }
-
-        /* Bundle Preview (Always Visible) */
-        .bundle-preview {
-            display: flex;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .bundle-preview:hover {
-            background: var(--bg-card-hover);
-        }
-
-        .bundle-images {
-            display: flex;
-            flex-shrink: 0;
-            width: 200px;
-            height: 120px;
-            overflow: hidden;
-        }
-
-        .bundle-images img {
-            width: 50%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .bundle-images.single img {
-            width: 100%;
-        }
-
-        .bundle-preview:hover .bundle-images img {
-            transform: scale(1.05);
-        }
-
-        .bundle-info {
-            flex: 1;
-            padding: 15px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .bundle-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .bundle-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .bundle-badge {
-            background: var(--primary);
-            color: var(--bg-dark);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 3px;
-            letter-spacing: 0.1em;
-        }
-
-        .bundle-desc {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .bundle-meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .bundle-price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--accent-green);
-        }
-
-        .expand-btn {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--primary);
-            background: none;
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.1em;
-        }
-
-        .expand-btn svg {
-            transition: transform 0.3s ease;
-        }
-
-        .bundle-card.expanded .expand-btn svg {
-            transform: rotate(180deg);
-        }
-
-        /* Bundle Details (Expandable) */
-        .bundle-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            border-top: 1px solid rgba(255, 215, 0, 0);
-        }
-
-        .bundle-card.expanded .bundle-details {
-            max-height: 1000px;
-            border-top-color: rgba(255, 215, 0, 0.1);
-        }
-
-        .details-content {
-            padding: 25px;
-        }
-
-        /* Games in Bundle */
-        .bundle-contents {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-        .bundle-label {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--primary);
-            letter-spacing: 0.2em;
-            margin-bottom: 10px;
-        }
-
-        .bundle-games {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .bundle-game-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px;
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 4px;
-            border-left: 2px solid var(--primary);
-        }
-
-        .bundle-game-item span {
-            font-size: 0.9rem;
-        }
-
-        /* Info Tabs */
-        .info-tabs {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        .info-tab {
-            padding: 10px 15px;
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .info-tab.active {
-            color: var(--primary);
-        }
-
-        .info-tab::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .info-tab.active::after {
-            transform: scaleX(1);
-        }
-
-        .info-content {
-            display: none;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 6px;
-            font-size: 0.85rem;
-            line-height: 1.8;
-        }
-
-        .info-content.active {
-            display: block;
-        }
-
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .spec-label {
-            color: var(--text-secondary);
-        }
-
-        .spec-value {
-            color: var(--text-primary);
-            text-align: right;
-        }
-
-        .game-specs-title {
-            color: var(--primary);
-            margin: 15px 0 10px;
-            font-weight: 600;
-        }
-
-        .game-specs-title:first-child {
-            margin-top: 0;
-        }
-
-        .age-rating {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 15px;
-            background: rgba(255, 68, 68, 0.1);
-            border: 1px solid var(--accent-red);
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-
-        .age-badge {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent-red);
-        }
-
-        .age-text {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* Buy Button */
-        .buy-section {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .buy-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 35px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--bg-dark);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .buy-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .buy-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px var(--glow);
-        }
-
-        .buy-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Footer */
-        footer {
-            position: relative;
-            z-index: 5;
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-            background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 15, 0.95) 100%);
-        }
-
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 0.3em;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .footer-tagline {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
-        .footer-mission {
-            margin-top: 15px;
-            padding: 15px 25px;
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 6px;
-            display: inline-block;
-        }
-
-        .footer-mission p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-dark);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
-        /* Responsive */
+        @keyframes circuit-flow { 0% { left: -300px; } 100% { left: 100%; } }
+        header { position: relative; z-index: 10; padding: 15px 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0, 255, 255, 0.1); background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, transparent 100%); }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 60px; width: auto; }
+        .logo-text { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 0.3em; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-links a { display: inline-flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; color: var(--primary-cyan); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.1em; transition: all 0.3s ease; padding: 10px 20px; border: 1px solid var(--primary-cyan); border-radius: 4px; }
+        .nav-links a:hover { background: var(--primary-gradient); color: var(--bg-dark); box-shadow: 0 0 20px var(--glow-cyan), 0 0 20px var(--glow-magenta); }
+        .nav-links a svg { width: 18px; height: 18px; }
+        .hero { position: relative; z-index: 5; text-align: center; padding: 50px 20px 30px; }
+        .hero-tagline { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 0.5em; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 15px; opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+        .hero-title { font-family: 'Orbitron', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 300; color: var(--text-primary); margin-bottom: 10px; opacity: 0; animation: fadeInUp 0.8s ease 0.2s forwards; }
+        .hero-subtitle { font-size: 1.1rem; color: var(--text-secondary); opacity: 0; animation: fadeInUp 0.8s ease 0.4s forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        main { position: relative; z-index: 5; max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
+        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+        .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--primary-cyan), transparent); }
+        .section-line:last-child { background: linear-gradient(90deg, transparent, var(--primary-magenta)); }
+        .section-title { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.3em; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .bundles-grid { display: flex; flex-direction: column; gap: 20px; }
+        .bundle-card { background: var(--bg-card); border: 1px solid rgba(0, 255, 255, 0.1); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; }
+        .bundle-card:hover { border-color: rgba(0, 255, 255, 0.3); box-shadow: 0 0 30px rgba(0, 255, 255, 0.1), 0 0 30px rgba(255, 0, 255, 0.1); }
+        .bundle-preview { display: flex; gap: 20px; padding: 20px; cursor: pointer; align-items: center; }
+        .bundle-images { display: flex; gap: 8px; flex-shrink: 0; }
+        .bundle-images img { width: 120px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s ease; }
+        .bundle-card:hover .bundle-images img { transform: scale(1.02); }
+        .bundle-info { flex: 1; min-width: 0; }
+        .bundle-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+        .bundle-title { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.05em; }
+        .bundle-badge { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; padding: 3px 8px; background: var(--primary-gradient); color: var(--bg-dark); border-radius: 3px; font-weight: 600; }
+        .bundle-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .bundle-meta { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .bundle-price { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; font-weight: 700; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .expand-btn { display: inline-flex; align-items: center; gap: 6px; font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: var(--primary-cyan); background: transparent; border: 1px solid rgba(0, 255, 255, 0.3); padding: 6px 12px; border-radius: 4px; cursor: pointer; transition: all 0.3s ease; letter-spacing: 0.05em; }
+        .expand-btn:hover { background: rgba(0, 255, 255, 0.1); border-color: var(--primary-cyan); }
+        .expand-btn svg { transition: transform 0.3s ease; }
+        .bundle-card.expanded .expand-btn svg { transform: rotate(180deg); }
+        .bundle-details { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; background: rgba(0, 0, 0, 0.3); }
+        .bundle-card.expanded .bundle-details { max-height: 1000px; }
+        .details-content { padding: 20px; border-top: 1px solid rgba(0, 255, 255, 0.1); }
+        .bundle-contents { margin-bottom: 20px; }
+        .bundle-label { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; color: var(--primary-cyan); letter-spacing: 0.1em; margin-bottom: 10px; }
+        .bundle-games { display: flex; flex-wrap: wrap; gap: 10px; }
+        .bundle-game-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(0, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.1); border-radius: 6px; font-size: 0.85rem; }
+        .info-tabs { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .info-tab { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; padding: 8px 16px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; border-radius: 4px; letter-spacing: 0.05em; }
+        .info-tab:hover { border-color: rgba(0, 255, 255, 0.3); color: var(--primary-cyan); }
+        .info-tab.active { background: var(--primary-gradient); border-color: transparent; color: var(--bg-dark); }
+        .info-content { display: none; background: rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 15px; margin-bottom: 20px; }
+        .info-content.active { display: block; }
+        .game-specs-title { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; margin-top: 15px; }
+        .game-specs-title:first-child { margin-top: 0; }
+        .spec-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem; }
+        .spec-label { color: var(--text-secondary); font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; }
+        .spec-value { color: var(--text-primary); text-align: right; }
+        .age-rating { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .age-badge { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; padding: 10px 15px; background: var(--accent-red); color: white; border-radius: 6px; }
+        .age-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; }
+        .buy-section { display: flex; justify-content: flex-end; }
+        .buy-btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 12px 24px; background: var(--primary-gradient); color: var(--bg-dark); text-decoration: none; border-radius: 6px; transition: all 0.3s ease; letter-spacing: 0.05em; }
+        .buy-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--glow-cyan), 0 10px 30px var(--glow-magenta); }
+        footer { position: relative; z-index: 5; text-align: center; padding: 40px 20px; border-top: 1px solid rgba(0, 255, 255, 0.1); background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, transparent 100%); }
+        .footer-logo { font-family: 'Orbitron', sans-serif; font-size: 1rem; letter-spacing: 0.3em; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+        .footer-tagline { font-size: 0.9rem; color: var(--text-secondary); font-style: italic; margin-bottom: 15px; }
+        .footer-mission { font-size: 0.8rem; color: var(--text-secondary); opacity: 0.6; }
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px;
-            }
-
-            .bundle-preview {
-                flex-direction: column;
-            }
-
-            .bundle-images {
-                width: 100%;
-                height: 150px;
-            }
-
-            .bundle-info {
-                padding: 15px;
-            }
-
-            .bundle-title {
-                font-size: 1rem;
-            }
-
-            .logo-text {
-                font-size: 1.2rem;
-                letter-spacing: 0.2em;
-            }
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .logo-img { height: 50px; }
+            .logo-text { font-size: 1rem; }
+            .bundle-preview { flex-direction: column; align-items: flex-start; }
+            .bundle-images { width: 100%; justify-content: center; flex-wrap: wrap; }
+            .bundle-images img { width: calc(33% - 6px); max-width: 120px; }
         }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary-cyan), var(--primary-magenta)); border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -639,30 +120,30 @@
     </div>
 
     <header>
-        <span class="logo-text">▶ P R E S S  S T A R T</span>
+        <div class="logo-container">
+            <span class="logo-text">PRESS START</span>
+        </div>
         <nav class="nav-links">
             <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
                 VISIT OUR PAGE
             </a>
         </nav>
     </header>
 
     <section class="hero">
-        <p class="hero-tagline">FREE GAMES FOR THOSE WHO NEED THEM</p>
-        <h1 class="hero-title">Not everyone can afford to play.</h1>
-        <p class="hero-subtitle">We're here to change that. 🎮</p>
+        <p class="hero-tagline">GAME STORE</p>
+        <h1 class="hero-title">Premium Game Bundles for Everyone</h1>
     </section>
 
     <main>
         <div class="section-header">
+            <div class="section-line"></div>
             <h2 class="section-title">AVAILABLE BUNDLES</h2>
             <div class="section-line"></div>
         </div>
 
-        <div class="bundles-container">
+        <div class="bundles-grid">
             <!-- The Last of Us Bundle -->
             <article class="bundle-card" id="tlou-bundle">
                 <div class="bundle-preview" onclick="toggleBundle('tlou-bundle')">
@@ -675,96 +156,49 @@
                             <h3 class="bundle-title">THE LAST OF US BUNDLE</h3>
                             <span class="bundle-badge">2 GAMES</span>
                         </div>
-                        <p class="bundle-desc">Experience the complete post-apocalyptic saga. Follow Joel and Ellie's emotional journey through a fungal-infected America, then continue with Ellie's harrowing tale of survival and revenge in the critically acclaimed sequel.</p>
+                        <p class="bundle-desc">Experience the complete story of Joel and Ellie. Two critically acclaimed masterpieces that redefined narrative gaming.</p>
                         <div class="bundle-meta">
                             <span class="bundle-price">₱50</span>
-                            <button class="expand-btn">
-                                VIEW DETAILS
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                                </svg>
-                            </button>
+                            <button class="expand-btn">VIEW DETAILS <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
                         </div>
                     </div>
                 </div>
-
                 <div class="bundle-details">
                     <div class="details-content">
                         <div class="bundle-contents">
                             <p class="bundle-label">INCLUDED IN BUNDLE</p>
                             <div class="bundle-games">
-                                <div class="bundle-game-item">
-                                    <span>📀 The Last of Us Part I (PC)</span>
-                                </div>
-                                <div class="bundle-game-item">
-                                    <span>📀 The Last of Us Part II Remastered (PC)</span>
-                                </div>
+                                <div class="bundle-game-item"><span>📀 The Last of Us Part I (PC)</span></div>
+                                <div class="bundle-game-item"><span>📀 The Last of Us Part II Remastered (PC)</span></div>
                             </div>
                         </div>
-
                         <div class="info-tabs">
                             <button class="info-tab active" onclick="switchTab(event, 'tlou-specs')">SYSTEM REQUIREMENTS</button>
                             <button class="info-tab" onclick="switchTab(event, 'tlou-age')">AGE RATING</button>
                         </div>
-
                         <div id="tlou-specs" class="info-content active">
                             <p class="game-specs-title">The Last of Us Part I:</p>
-                            <div class="spec-row">
-                                <span class="spec-label">CPU</span>
-                                <span class="spec-value">Ryzen 5 1500X / i7-4770K</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">RAM</span>
-                                <span class="spec-value">16 GB</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">GPU</span>
-                                <span class="spec-value">RX 470 / GTX 970 (4GB)</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Storage</span>
-                                <span class="spec-value">100 GB</span>
-                            </div>
-                            <div class="spec-row" style="border-bottom: none;">
-                                <span class="spec-label">OS</span>
-                                <span class="spec-value">Windows 10</span>
-                            </div>
-
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">Ryzen 5 1500X / i7-4770K</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">16 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">RX 470 / GTX 970 (4GB)</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">100 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10</span></div>
                             <p class="game-specs-title">The Last of Us Part II Remastered:</p>
-                            <div class="spec-row">
-                                <span class="spec-label">CPU</span>
-                                <span class="spec-value">i5-8600 / Ryzen 5 3600</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">RAM</span>
-                                <span class="spec-value">16 GB</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">GPU</span>
-                                <span class="spec-value">RTX 3060 / RX 5700</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Storage</span>
-                                <span class="spec-value">150 GB (SSD)</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">OS</span>
-                                <span class="spec-value">Windows 10 / 11</span>
-                            </div>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-8600 / Ryzen 5 3600</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">16 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">RTX 3060 / RX 5700</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">150 GB (SSD)</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
                         </div>
-
                         <div id="tlou-age" class="info-content">
                             <div class="age-rating">
                                 <span class="age-badge">18+</span>
                                 <span class="age-text">Mature Content: Intense Violence, Blood and Gore, Strong Language, Sexual Content</span>
                             </div>
                         </div>
-
                         <div class="buy-section">
                             <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank" class="buy-btn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                                 BUY NOW - ₱50
                             </a>
                         </div>
@@ -784,96 +218,119 @@
                             <h3 class="bundle-title">SILENT HILL BUNDLE</h3>
                             <span class="bundle-badge">2 GAMES</span>
                         </div>
-                        <p class="bundle-desc">Two nightmares. One bundle. Experience the legendary psychological horror with Silent Hill 2 Remake and the brand new Silent Hill f set in 1960s Japan. Written by Ryukishi07, with music by Akira Yamaoka.</p>
+                        <p class="bundle-desc">Two nightmares. One bundle. Silent Hill 2 Remake and Silent Hill f. Written by Ryukishi07, music by Akira Yamaoka.</p>
                         <div class="bundle-meta">
                             <span class="bundle-price">₱50</span>
-                            <button class="expand-btn">
-                                VIEW DETAILS
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                                </svg>
-                            </button>
+                            <button class="expand-btn">VIEW DETAILS <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
                         </div>
                     </div>
                 </div>
-
                 <div class="bundle-details">
                     <div class="details-content">
                         <div class="bundle-contents">
                             <p class="bundle-label">INCLUDED IN BUNDLE</p>
                             <div class="bundle-games">
-                                <div class="bundle-game-item">
-                                    <span>📀 Silent Hill 2 Remake</span>
-                                </div>
-                                <div class="bundle-game-item">
-                                    <span>📀 Silent Hill f</span>
-                                </div>
+                                <div class="bundle-game-item"><span>📀 Silent Hill 2 Remake</span></div>
+                                <div class="bundle-game-item"><span>📀 Silent Hill f</span></div>
                             </div>
                         </div>
-
                         <div class="info-tabs">
                             <button class="info-tab active" onclick="switchTab(event, 'sh-specs')">SYSTEM REQUIREMENTS</button>
                             <button class="info-tab" onclick="switchTab(event, 'sh-age')">AGE RATING</button>
                         </div>
-
                         <div id="sh-specs" class="info-content active">
                             <p class="game-specs-title">Silent Hill 2 Remake:</p>
-                            <div class="spec-row">
-                                <span class="spec-label">CPU</span>
-                                <span class="spec-value">i7-6700K / Ryzen 5 3600</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">RAM</span>
-                                <span class="spec-value">16 GB</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">GPU</span>
-                                <span class="spec-value">GTX 1070 Ti / RX 5700</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Storage</span>
-                                <span class="spec-value">50 GB</span>
-                            </div>
-                            <div class="spec-row" style="border-bottom: none;">
-                                <span class="spec-label">OS</span>
-                                <span class="spec-value">Windows 10</span>
-                            </div>
-
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i7-6700K / Ryzen 5 3600</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">16 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 1070 Ti / RX 5700</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">50 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10</span></div>
                             <p class="game-specs-title">Silent Hill f:</p>
-                            <div class="spec-row">
-                                <span class="spec-label">CPU</span>
-                                <span class="spec-value">i5-8400 / Ryzen 5 2600</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">RAM</span>
-                                <span class="spec-value">16 GB</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">GPU</span>
-                                <span class="spec-value">GTX 1070 Ti / RX 5700</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Storage</span>
-                                <span class="spec-value">50 GB (SSD Recommended)</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">OS</span>
-                                <span class="spec-value">Windows 11</span>
-                            </div>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-8400 / Ryzen 5 2600</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">16 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 1070 Ti / RX 5700</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">50 GB (SSD)</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 11</span></div>
                         </div>
-
                         <div id="sh-age" class="info-content">
                             <div class="age-rating">
                                 <span class="age-badge">18+</span>
                                 <span class="age-text">Mature Content: Psychological Horror, Violence, Disturbing Imagery, Blood and Gore</span>
                             </div>
                         </div>
-
                         <div class="buy-section">
                             <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank" class="buy-btn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                BUY NOW - ₱50
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Resident Evil Remake Bundle -->
+            <article class="bundle-card" id="re-bundle">
+                <div class="bundle-preview" onclick="toggleBundle('re-bundle')">
+                    <div class="bundle-images">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/883710/header.jpg" alt="Resident Evil 2 Remake">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/952060/header.jpg" alt="Resident Evil 3 Remake">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg" alt="Resident Evil 4 Remake">
+                    </div>
+                    <div class="bundle-info">
+                        <div class="bundle-header">
+                            <h3 class="bundle-title">RESIDENT EVIL REMAKE BUNDLE</h3>
+                            <span class="bundle-badge">3 GAMES</span>
+                        </div>
+                        <p class="bundle-desc">The ultimate survival horror collection. Three legendary remakes featuring Leon, Claire, Jill, and Carlos. Fight through Raccoon City and beyond.</p>
+                        <div class="bundle-meta">
+                            <span class="bundle-price">₱50</span>
+                            <button class="expand-btn">VIEW DETAILS <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bundle-details">
+                    <div class="details-content">
+                        <div class="bundle-contents">
+                            <p class="bundle-label">INCLUDED IN BUNDLE</p>
+                            <div class="bundle-games">
+                                <div class="bundle-game-item"><span>📀 Resident Evil 2 Remake</span></div>
+                                <div class="bundle-game-item"><span>📀 Resident Evil 3 Remake</span></div>
+                                <div class="bundle-game-item"><span>📀 Resident Evil 4 Remake</span></div>
+                            </div>
+                        </div>
+                        <div class="info-tabs">
+                            <button class="info-tab active" onclick="switchTab(event, 're-specs')">SYSTEM REQUIREMENTS</button>
+                            <button class="info-tab" onclick="switchTab(event, 're-age')">AGE RATING</button>
+                        </div>
+                        <div id="re-specs" class="info-content active">
+                            <p class="game-specs-title">Resident Evil 2 Remake:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-4460 / AMD FX-6300</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 960 / RX 460</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">26 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
+                            <p class="game-specs-title">Resident Evil 3 Remake:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-4460 / AMD FX-6300</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 960 / RX 460</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">45 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
+                            <p class="game-specs-title">Resident Evil 4 Remake:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-7500 / Ryzen 3 1200</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 1050 Ti / RX 560 (4GB)</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">68 GB (SSD Recommended)</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
+                        </div>
+                        <div id="re-age" class="info-content">
+                            <div class="age-rating">
+                                <span class="age-badge">18+</span>
+                                <span class="age-text">Mature Content: Intense Violence, Blood and Gore, Strong Language</span>
+                            </div>
+                        </div>
+                        <div class="buy-section">
+                            <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank" class="buy-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
                                 BUY NOW - ₱50
                             </a>
                         </div>
@@ -886,42 +343,21 @@
     <footer>
         <p class="footer-logo">▶ P R E S S  S T A R T</p>
         <p class="footer-tagline">Because everyone deserves to press start.</p>
-        <div class="footer-mission">
-            <p>Gaming changed our lives. Now we're making sure everyone gets the chance to play.</p>
-        </div>
+        <div class="footer-mission"><p>Gaming changed our lives. Now we're making sure everyone gets the chance to play.</p></div>
     </footer>
 
     <script>
-        function toggleBundle(bundleId) {
-            const bundle = document.getElementById(bundleId);
-            bundle.classList.toggle('expanded');
-        }
-
+        function toggleBundle(bundleId) { document.getElementById(bundleId).classList.toggle('expanded'); }
         function switchTab(event, contentId) {
             event.stopPropagation();
-            
-            // Get the parent card
             const card = event.target.closest('.bundle-card');
-            
-            // Remove active class from all tabs in this card
-            const tabs = card.querySelectorAll('.info-tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Hide all content in this card
-            const contents = card.querySelectorAll('.info-content');
-            contents.forEach(content => content.classList.remove('active'));
-            
-            // Add active class to clicked tab
+            card.querySelectorAll('.info-tab').forEach(tab => tab.classList.remove('active'));
+            card.querySelectorAll('.info-content').forEach(content => content.classList.remove('active'));
             event.target.classList.add('active');
-            
-            // Show corresponding content
             document.getElementById(contentId).classList.add('active');
         }
-
-        // Add staggered animation to cards on load
         document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.bundle-card');
-            cards.forEach((card, index) => {
+            document.querySelectorAll('.bundle-card').forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
                 setTimeout(() => {
