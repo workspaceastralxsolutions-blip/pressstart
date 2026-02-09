@@ -211,7 +211,7 @@
                 <div class="bundle-preview" onclick="toggleBundle('sh-bundle')">
                     <div class="bundle-images">
                         <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg" alt="Silent Hill 2 Remake">
-                        <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2947440/header.jpg" alt="Silent Hill f">
+                        <img src="https://media.rawg.io/media/screenshots/8b2/8b243945a439d181d8736e785064e01d.jpg" alt="Silent Hill f">
                     </div>
                     <div class="bundle-info">
                         <div class="bundle-header">
