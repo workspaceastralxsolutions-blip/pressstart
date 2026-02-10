@@ -88,6 +88,7 @@
         .spec-value { color: var(--text-primary); text-align: right; }
         .age-rating { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         .age-badge { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; padding: 10px 15px; background: var(--accent-red); color: white; border-radius: 6px; }
+        .age-badge.teen { background: #ff8800; }
         .age-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; }
         .buy-section { display: flex; justify-content: flex-end; }
         .buy-btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 12px 24px; background: var(--primary-gradient); color: var(--bg-dark); text-decoration: none; border-radius: 6px; transition: all 0.3s ease; letter-spacing: 0.05em; }
@@ -144,7 +145,147 @@
         </div>
 
         <div class="bundles-grid">
-            <!-- The Last of Us Bundle -->
+            <!-- Little Nightmares Bundle (3 images) -->
+            <article class="bundle-card" id="ln-bundle">
+                <div class="bundle-preview" onclick="toggleBundle('ln-bundle')">
+                    <div class="bundle-images">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/424840/header.jpg" alt="Little Nightmares">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/860510/header.jpg" alt="Little Nightmares II">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1392860/header.jpg" alt="Little Nightmares III">
+                    </div>
+                    <div class="bundle-info">
+                        <div class="bundle-header">
+                            <h3 class="bundle-title">LITTLE NIGHTMARES BUNDLE</h3>
+                            <span class="bundle-badge">3 GAMES</span>
+                        </div>
+                        <p class="bundle-desc">The complete nightmare trilogy. Guide Six, Mono, Low and Alone through dark whimsical worlds filled with childhood fears and corrupted souls.</p>
+                        <div class="bundle-meta">
+                            <span class="bundle-price">₱50</span>
+                            <button class="expand-btn">VIEW DETAILS <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bundle-details">
+                    <div class="details-content">
+                        <div class="bundle-contents">
+                            <p class="bundle-label">INCLUDED IN BUNDLE</p>
+                            <div class="bundle-games">
+                                <div class="bundle-game-item"><span>📀 Little Nightmares</span></div>
+                                <div class="bundle-game-item"><span>📀 Little Nightmares II</span></div>
+                                <div class="bundle-game-item"><span>📀 Little Nightmares III</span></div>
+                            </div>
+                        </div>
+                        <div class="info-tabs">
+                            <button class="info-tab active" onclick="switchTab(event, 'ln-specs')">SYSTEM REQUIREMENTS</button>
+                            <button class="info-tab" onclick="switchTab(event, 'ln-age')">AGE RATING</button>
+                        </div>
+                        <div id="ln-specs" class="info-content active">
+                            <p class="game-specs-title">Little Nightmares:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">Intel Core i3</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">4 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 460 / Radeon HD 6850</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">10 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 7 (64-bit)</span></div>
+                            <p class="game-specs-title">Little Nightmares II:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-2300 / AMD FX-4350</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">4 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 570 / Radeon HD 7850</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">5 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 (64-bit)</span></div>
+                            <p class="game-specs-title">Little Nightmares III:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-6500 / Ryzen 3 1200</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 1060 / RX 580</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">20 GB (SSD)</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 11 (64-bit)</span></div>
+                        </div>
+                        <div id="ln-age" class="info-content">
+                            <div class="age-rating">
+                                <span class="age-badge teen">16+</span>
+                                <span class="age-text">Teen Content: Horror, Violence, Disturbing Imagery, Dark Themes</span>
+                            </div>
+                        </div>
+                        <div class="buy-section">
+                            <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank" class="buy-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                BUY NOW - ₱50
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Resident Evil Remake Bundle (3 images) -->
+            <article class="bundle-card" id="re-bundle">
+                <div class="bundle-preview" onclick="toggleBundle('re-bundle')">
+                    <div class="bundle-images">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/883710/header.jpg" alt="Resident Evil 2 Remake">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/952060/header.jpg" alt="Resident Evil 3 Remake">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg" alt="Resident Evil 4 Remake">
+                    </div>
+                    <div class="bundle-info">
+                        <div class="bundle-header">
+                            <h3 class="bundle-title">RESIDENT EVIL REMAKE BUNDLE</h3>
+                            <span class="bundle-badge">3 GAMES</span>
+                        </div>
+                        <p class="bundle-desc">The ultimate survival horror collection. Three legendary remakes featuring Leon, Claire, Jill, and Carlos. Fight through Raccoon City and beyond.</p>
+                        <div class="bundle-meta">
+                            <span class="bundle-price">₱50</span>
+                            <button class="expand-btn">VIEW DETAILS <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bundle-details">
+                    <div class="details-content">
+                        <div class="bundle-contents">
+                            <p class="bundle-label">INCLUDED IN BUNDLE</p>
+                            <div class="bundle-games">
+                                <div class="bundle-game-item"><span>📀 Resident Evil 2 Remake</span></div>
+                                <div class="bundle-game-item"><span>📀 Resident Evil 3 Remake</span></div>
+                                <div class="bundle-game-item"><span>📀 Resident Evil 4 Remake</span></div>
+                            </div>
+                        </div>
+                        <div class="info-tabs">
+                            <button class="info-tab active" onclick="switchTab(event, 're-specs')">SYSTEM REQUIREMENTS</button>
+                            <button class="info-tab" onclick="switchTab(event, 're-age')">AGE RATING</button>
+                        </div>
+                        <div id="re-specs" class="info-content active">
+                            <p class="game-specs-title">Resident Evil 2 Remake:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-4460 / AMD FX-6300</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 960 / RX 460</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">26 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
+                            <p class="game-specs-title">Resident Evil 3 Remake:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-4460 / AMD FX-6300</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 960 / RX 460</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">45 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
+                            <p class="game-specs-title">Resident Evil 4 Remake:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-7500 / Ryzen 3 1200</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 1050 Ti / RX 560 (4GB)</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">68 GB (SSD Recommended)</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
+                        </div>
+                        <div id="re-age" class="info-content">
+                            <div class="age-rating">
+                                <span class="age-badge">18+</span>
+                                <span class="age-text">Mature Content: Intense Violence, Blood and Gore, Strong Language</span>
+                            </div>
+                        </div>
+                        <div class="buy-section">
+                            <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank" class="buy-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                BUY NOW - ₱50
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- The Last of Us Bundle (2 images) -->
             <article class="bundle-card" id="tlou-bundle">
                 <div class="bundle-preview" onclick="toggleBundle('tlou-bundle')">
                     <div class="bundle-images">
@@ -206,7 +347,7 @@
                 </div>
             </article>
 
-            <!-- Silent Hill Bundle -->
+            <!-- Silent Hill Bundle (2 images) -->
             <article class="bundle-card" id="sh-bundle">
                 <div class="bundle-preview" onclick="toggleBundle('sh-bundle')">
                     <div class="bundle-images">
@@ -256,76 +397,6 @@
                             <div class="age-rating">
                                 <span class="age-badge">18+</span>
                                 <span class="age-text">Mature Content: Psychological Horror, Violence, Disturbing Imagery, Blood and Gore</span>
-                            </div>
-                        </div>
-                        <div class="buy-section">
-                            <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank" class="buy-btn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                                BUY NOW - ₱50
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Resident Evil Remake Bundle -->
-            <article class="bundle-card" id="re-bundle">
-                <div class="bundle-preview" onclick="toggleBundle('re-bundle')">
-                    <div class="bundle-images">
-                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/883710/header.jpg" alt="Resident Evil 2 Remake">
-                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/952060/header.jpg" alt="Resident Evil 3 Remake">
-                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg" alt="Resident Evil 4 Remake">
-                    </div>
-                    <div class="bundle-info">
-                        <div class="bundle-header">
-                            <h3 class="bundle-title">RESIDENT EVIL REMAKE BUNDLE</h3>
-                            <span class="bundle-badge">3 GAMES</span>
-                        </div>
-                        <p class="bundle-desc">The ultimate survival horror collection. Three legendary remakes featuring Leon, Claire, Jill, and Carlos. Fight through Raccoon City and beyond.</p>
-                        <div class="bundle-meta">
-                            <span class="bundle-price">₱50</span>
-                            <button class="expand-btn">VIEW DETAILS <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="bundle-details">
-                    <div class="details-content">
-                        <div class="bundle-contents">
-                            <p class="bundle-label">INCLUDED IN BUNDLE</p>
-                            <div class="bundle-games">
-                                <div class="bundle-game-item"><span>📀 Resident Evil 2 Remake</span></div>
-                                <div class="bundle-game-item"><span>📀 Resident Evil 3 Remake</span></div>
-                                <div class="bundle-game-item"><span>📀 Resident Evil 4 Remake</span></div>
-                            </div>
-                        </div>
-                        <div class="info-tabs">
-                            <button class="info-tab active" onclick="switchTab(event, 're-specs')">SYSTEM REQUIREMENTS</button>
-                            <button class="info-tab" onclick="switchTab(event, 're-age')">AGE RATING</button>
-                        </div>
-                        <div id="re-specs" class="info-content active">
-                            <p class="game-specs-title">Resident Evil 2 Remake:</p>
-                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-4460 / AMD FX-6300</span></div>
-                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
-                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 960 / RX 460</span></div>
-                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">26 GB</span></div>
-                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
-                            <p class="game-specs-title">Resident Evil 3 Remake:</p>
-                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-4460 / AMD FX-6300</span></div>
-                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
-                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 960 / RX 460</span></div>
-                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">45 GB</span></div>
-                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
-                            <p class="game-specs-title">Resident Evil 4 Remake:</p>
-                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-7500 / Ryzen 3 1200</span></div>
-                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
-                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 1050 Ti / RX 560 (4GB)</span></div>
-                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">68 GB (SSD Recommended)</span></div>
-                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11</span></div>
-                        </div>
-                        <div id="re-age" class="info-content">
-                            <div class="age-rating">
-                                <span class="age-badge">18+</span>
-                                <span class="age-text">Mature Content: Intense Violence, Blood and Gore, Strong Language</span>
                             </div>
                         </div>
                         <div class="buy-section">
