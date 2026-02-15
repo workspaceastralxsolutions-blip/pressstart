@@ -215,6 +215,68 @@
                 </div>
             </article>
 
+            <!-- Resident Evil 7 & 8 Bundle (2 images) -->
+            <article class="bundle-card" id="re78-bundle">
+                <div class="bundle-preview" onclick="toggleBundle('re78-bundle')">
+                    <div class="bundle-images">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/418370/header.jpg" alt="Resident Evil 7 Biohazard">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/header.jpg" alt="Resident Evil Village">
+                    </div>
+                    <div class="bundle-info">
+                        <div class="bundle-header">
+                            <h3 class="bundle-title">RESIDENT EVIL 7 & 8 BUNDLE</h3>
+                            <span class="bundle-badge">2 GAMES</span>
+                        </div>
+                        <p class="bundle-desc">The Winters family saga. Experience Ethan's terrifying journey through the Baker estate and the mysterious village ruled by Mother Miranda.</p>
+                        <div class="bundle-meta">
+                            <span class="bundle-price">₱50</span>
+                            <button class="expand-btn">VIEW DETAILS <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bundle-details">
+                    <div class="details-content">
+                        <div class="bundle-contents">
+                            <p class="bundle-label">INCLUDED IN BUNDLE</p>
+                            <div class="bundle-games">
+                                <div class="bundle-game-item"><span>📀 Resident Evil 7 Biohazard</span></div>
+                                <div class="bundle-game-item"><span>📀 Resident Evil Village (RE8)</span></div>
+                            </div>
+                        </div>
+                        <div class="info-tabs">
+                            <button class="info-tab active" onclick="switchTab(event, 're78-specs')">SYSTEM REQUIREMENTS</button>
+                            <button class="info-tab" onclick="switchTab(event, 're78-age')">AGE RATING</button>
+                        </div>
+                        <div id="re78-specs" class="info-content active">
+                            <p class="game-specs-title">Resident Evil 7 Biohazard:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-4460 / AMD FX-6300</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 960 / RX 460</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">26 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 (64-bit)</span></div>
+                            <p class="game-specs-title">Resident Evil Village:</p>
+                            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">i5-7500 / Ryzen 3 1200</span></div>
+                            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">8 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">GTX 1050 Ti / RX 560 (4GB)</span></div>
+                            <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">50 GB</span></div>
+                            <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 (64-bit)</span></div>
+                        </div>
+                        <div id="re78-age" class="info-content">
+                            <div class="age-rating">
+                                <span class="age-badge">18+</span>
+                                <span class="age-text">Mature Content: Intense Violence, Blood and Gore, Strong Language, Disturbing Imagery</span>
+                            </div>
+                        </div>
+                        <div class="buy-section">
+                            <a href="https://www.facebook.com/profile.php?id=61587333490339" target="_blank" class="buy-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                BUY NOW - ₱50
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
             <!-- Resident Evil Remake Bundle (3 images) -->
             <article class="bundle-card" id="re-bundle">
                 <div class="bundle-preview" onclick="toggleBundle('re-bundle')">
